@@ -1,0 +1,6 @@
+module SwiftFCXRefresh {
+  umbrella header "SwiftFCXRefresh-umbrella.h"
+
+  export *
+  module * { export * }
+}

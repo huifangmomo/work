@@ -1,0 +1,1 @@
+../../../TrezorCrypto/trezor-crypto/aes/brg_types.h

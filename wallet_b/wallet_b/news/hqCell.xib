@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="hqCell" customModule="wallet_b" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wFk-DK-Gll">
+                        <rect key="frame" x="16" y="5.5" width="158.5" height="54"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="市值#1 $1042.49亿，以太坊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch9-Kq-ffF">
+                                <rect key="frame" x="0.0" y="0.0" width="144.5" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4ng-bE-nYZ">
+                                <rect key="frame" x="0.0" y="15.5" width="62" height="23"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_ money_1" translatesAutoresizingMaskIntoConstraints="NO" id="Y6G-RK-pps">
+                                        <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woj-jL-HrC">
+                                        <rect key="frame" x="33" y="0.0" width="29" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1053.64万 ETH/300.66亿 CNY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcH-7u-wP8">
+                                <rect key="frame" x="0.0" y="40.5" width="158.5" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="q3W-lg-Ilf">
+                        <rect key="frame" x="186.5" y="13.5" width="172.5" height="38"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥40,043.23" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bki-7h-vZr">
+                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_rise" translatesAutoresizingMaskIntoConstraints="NO" id="6Ao-a2-TLU">
+                                <rect key="frame" x="85.5" y="0.0" width="87" height="38"/>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+9.99%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH6-gK-BjG">
+                        <rect key="frame" x="292" y="24.5" width="47" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nH6-gK-BjG" firstAttribute="centerY" secondItem="6Ao-a2-TLU" secondAttribute="centerY" id="AzZ-pZ-lSC"/>
+                    <constraint firstItem="nH6-gK-BjG" firstAttribute="centerX" secondItem="6Ao-a2-TLU" secondAttribute="centerX" id="K5b-BN-cJC"/>
+                    <constraint firstItem="q3W-lg-Ilf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ihB-I2-Khh"/>
+                    <constraint firstItem="wFk-DK-Gll" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mS8-4X-tAR"/>
+                    <constraint firstItem="wFk-DK-Gll" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pUp-Rh-U8U"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="q3W-lg-Ilf" secondAttribute="trailing" id="wFP-QZ-nmX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bgImg" destination="6Ao-a2-TLU" id="NDO-qZ-fP5"/>
+                <outlet property="img" destination="Y6G-RK-pps" id="kqU-5u-wX1"/>
+                <outlet property="lab_1" destination="ch9-Kq-ffF" id="vmS-C3-GRw"/>
+                <outlet property="lab_2" destination="UcH-7u-wP8" id="YX4-gu-ZBf"/>
+                <outlet property="name" destination="woj-jL-HrC" id="ZsL-T1-i4I"/>
+                <outlet property="priceLab" destination="bki-7h-vZr" id="y5H-CY-pjR"/>
+                <outlet property="zdfLab" destination="nH6-gK-BjG" id="3IS-fo-urN"/>
+            </connections>
+            <point key="canvasLocation" x="25.5" y="51.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bg_rise" width="87" height="38"/>
+        <image name="icon_ money_1" width="23" height="23"/>
+    </resources>
+</document>

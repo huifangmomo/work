@@ -1,0 +1,1 @@
+../../../../Lokalise/Lokalise.framework/Versions/A/Headers/LokaliseLocalizationType.h

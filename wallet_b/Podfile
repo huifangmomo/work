@@ -1,0 +1,56 @@
+platform :ios, '10.0'
+inhibit_all_warnings!
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'wallet_b' do
+  pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec', :inhibit_warnings => true
+  pod 'AFNetworking', '2.5.3'
+  pod 'MBProgressHUD'  
+  pod 'RNCryptor','2.2'
+  pod 'ECSlidingViewController'
+  pod 'iCloudDocumentSync'
+  pod 'SwiftTryCatch'
+  
+  use_modular_headers!
+  pod 'BigInt', '~> 3.0'
+  pod 'R.swift'
+  pod 'SwiftyJSON'
+  pod 'JSONRPCKit', :git=> 'https://github.com/bricklife/JSONRPCKit.git'
+  pod 'PromiseKit', '~> 6.0'
+  pod 'APIKit'
+  pod 'Eureka', '~> 4.1.1'
+  pod 'QRCodeReaderViewController', :git=>'https://github.com/yannickl/QRCodeReaderViewController.git', :branch=>'master'
+  pod 'KeychainSwift'
+  pod 'RealmSwift'
+  pod 'Lokalise'
+  pod 'Moya', '~> 10.0.1'
+  pod 'CryptoSwift', '~> 0.8.0'
+  pod 'Kingfisher', '~> 4.0'
+  pod 'TrustCore', '~> 0.0.7'
+  pod 'TrustKeystore', '~> 0.4.0'
+  pod 'Branch'
+  pod 'TrustWeb3Provider', :git=>'https://github.com/TrustWallet/trust-web3-provider', :branch=>'master'
+  pod 'URLNavigator'
+  pod 'TrustWalletSDK', :git=>'https://github.com/TrustWallet/TrustSDK-iOS', :branch=>'master'
+  pod 'NVActivityIndicatorView'
+  pod 'JPush'
+  pod 'UMengAnalytics-NO-IDFA'
+  pod 'Fabric', ' 1.7.11'
+  pod 'Crashlytics', '3.10.7'  
+  pod 'SwiftFCXRefresh'
+end
+ 
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if ['JSONRPCKit'].include? target.name
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '3.0'
+      end
+    end
+    if ['TrustKeystore'].include? target.name
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
+      end
+    end
+  end
+end

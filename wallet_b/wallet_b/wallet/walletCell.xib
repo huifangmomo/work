@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="walletCell" customModule="wallet_b" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_wallet_1" translatesAutoresizingMaskIntoConstraints="NO" id="5yq-2V-Qrp">
+                        <rect key="frame" x="16" y="8.5" width="42" height="42"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-cp-GW3">
+                        <rect key="frame" x="68" y="10" width="129" height="39.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="以太坊钱包A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4G-py-lfr">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(0x28c2169b6d......433)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipe-Z7-pLV">
+                                <rect key="frame" x="0.0" y="26" width="129" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="US$5.39" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgZ-Ph-qkI">
+                        <rect key="frame" x="250.5" y="21" width="53.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="EgZ-Ph-qkI" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="DUe-6h-cZR"/>
+                    <constraint firstItem="mOu-cp-GW3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DlF-8x-CnK"/>
+                    <constraint firstItem="EgZ-Ph-qkI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Jwi-60-u6R"/>
+                    <constraint firstItem="5yq-2V-Qrp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="LGp-lb-GS4"/>
+                    <constraint firstItem="5yq-2V-Qrp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ey0-qr-mms"/>
+                    <constraint firstItem="mOu-cp-GW3" firstAttribute="leading" secondItem="5yq-2V-Qrp" secondAttribute="trailing" constant="10" id="hbb-Di-NR9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="tintColor" red="0.40000000000000002" green="0.57647058819999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="address" destination="Ipe-Z7-pLV" id="8dy-FB-gtN"/>
+                <outlet property="balance" destination="EgZ-Ph-qkI" id="hEh-Jm-KwS"/>
+                <outlet property="img" destination="5yq-2V-Qrp" id="9GM-UU-pus"/>
+                <outlet property="name" destination="I4G-py-lfr" id="vvn-fN-KNU"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_wallet_1" width="42" height="42"/>
+    </resources>
+</document>
