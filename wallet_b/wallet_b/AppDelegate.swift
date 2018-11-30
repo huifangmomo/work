@@ -19,8 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var blurView:UIVisualEffectView!
     let controller = UIViewController.init();
     
+    let DEFAULT_BLOCKEXPLORER_API = TLBlockExplorer.blockchain
     
     var appWallet = TLWallet(walletName: "App Wallet", walletConfig: TLWalletConfig(isTestnet: false))
+    var btcAccounts:TLAccounts?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -52,6 +54,98 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     class func instance() -> AppDelegate {
         return UIApplication.shared.delegate as! (AppDelegate)
     }
+    
+    func createNewBtcWallet(mnemonic: String, completion: @escaping (Bool) -> Void){
+        self.refreshApp(mnemonic)
+        let accountObject = self.btcAccounts!.createNewAccount(TLDisplayStrings.ACCOUNT_1_STRING(), accountType:.normal, preloadStartingAddresses:true)
+        accountObject.updateAccountNeedsRecovering(false)
+        guard let password = TLWalletJson.getDecryptedEncryptedWalletJSONPassphrase(),
+            let walletsJson = appWallet.getWalletsJson() else { return }
+        let encryptedWalletJson = TLWalletJson.getEncryptedWalletJsonContainer(walletsJson,
+                                                                               password: password)
+        let success = saveWalletJson(encryptedWalletJson as NSString, date:Date())
+        if success {
+            TLPreferences.setHasSetupHDWallet(true)
+            completion(true)
+        } else {
+            NSException(name: NSExceptionName(rawValue: "Error"), reason: "Error saving wallet JSON file", userInfo: nil).raise()
+            completion(false)
+        }
+        
+    }
+    
+    func refreshApp(_ passphrase: String, clearWalletInMemory: Bool = true) {
+        if (TLPreferences.getCloudBackupWalletFileName() == nil) {
+            TLPreferences.setCloudBackupWalletFileName()
+        }
+        
+        TLPreferences.deleteWalletPassphrase()
+        TLPreferences.deleteEncryptedWalletJSONPassphrase()
+        
+        TLPreferences.setWalletPassphrase(passphrase, useKeychain: true)
+        TLPreferences.setEncryptedWalletJSONPassphrase(passphrase, useKeychain: true)
+        TLPreferences.clearEncryptedWalletPassphraseKey()
+        
+        TLPreferences.setCanRestoreDeletedApp(true)
+        TLPreferences.setInAppSettingsCanRestoreDeletedApp(true)
+        
+        TLPreferences.setEnableBackupWithiCloud(false)
+        TLPreferences.setInAppSettingsKitEnableBackupWithiCloud(false)
+        
+        TLPreferences.setInAppSettingsKitEnabledDynamicFee(true)
+        TLPreferences.setInAppSettingsKitDynamicFeeSettingIdx(TLDynamicFeeSetting.FastestFee);
+        TLPreferences.setInAppSettingsKitTransactionFee(TLWalletUtils.DEFAULT_FEE_AMOUNT_IN_BITCOINS())
+        TLPreferences.setEnablePINCode(false)
+        TLSuggestions.instance().enabledAllSuggestions()
+        TLPreferences.resetBlockExplorerAPIURL()
+        
+        TLPreferences.setBlockExplorerAPI(String(format:"%ld", DEFAULT_BLOCKEXPLORER_API.rawValue))
+        TLPreferences.setInAppSettingsKitBlockExplorerAPI(String(format:"%ld", DEFAULT_BLOCKEXPLORER_API.rawValue))
+        
+        TLPreferences.resetStealthExplorerAPIURL()
+        TLPreferences.resetStealthServerPort()
+        TLPreferences.resetStealthWebSocketPort()
+        
+        
+        let DEFAULT_CURRENCY_IDX = "20"
+        TLPreferences.setCurrency(DEFAULT_CURRENCY_IDX)
+        TLPreferences.setInAppSettingsKitCurrency(DEFAULT_CURRENCY_IDX)
+        
+        TLPreferences.setSendFromType(.hdWallet)
+        TLPreferences.setSendFromIndex(0)
+        
+        if clearWalletInMemory {
+            let masterHex = TLHDWalletWrapper.getMasterHex(passphrase)
+            self.appWallet.createInitialWalletPayload(passphrase, masterHex:masterHex)
+            
+            self.btcAccounts = TLAccounts(appWallet: self.appWallet, accountsArray:self.appWallet.getAccountObjectArray(), accountType:.hdWallet)
+//            self.coldWalletAccounts = TLAccounts(appWallet: self.appWallet, accountsArray:self.appWallet.getColdWalletAccountArray(), accountType:.coldWallet)
+//            self.importedAccounts = TLAccounts(appWallet:self.appWallet, accountsArray:self.appWallet.getImportedAccountArray(), accountType:.imported)
+//            self.importedWatchAccounts = TLAccounts(appWallet: self.appWallet, accountsArray:self.appWallet.getWatchOnlyAccountArray(), accountType:.importedWatch)
+//            self.importedAddresses = TLImportedAddresses(appWallet: self.appWallet, importedAddresses:self.appWallet.getImportedPrivateKeyArray(), accountAddressType:.imported)
+//            self.importedWatchAddresses = TLImportedAddresses(appWallet: self.appWallet, importedAddresses:self.appWallet.getWatchOnlyAddressArray(), accountAddressType:.importedWatch)
+        }
+//        self.receiveSelectedObject = TLSelectedObject()
+//        self.historySelectedObject = TLSelectedObject()
+    }
+    
+    fileprivate func saveWalletJson(_ encryptedWalletJson: (NSString), date: (Date)) -> Bool {
+        let success = TLWalletJson.saveWalletJson(encryptedWalletJson as String, date:date)
+        
+        if (!success) {
+            DispatchQueue.main.async {
+                TLPrompts.promptErrorMessage(TLDisplayStrings.LOCAL_BACK_UP_TO_WALLET_FAILED_STRING(), message:TLDisplayStrings.LOCAL_BACK_UP_TO_WALLET_FAILED_STRING())
+            }
+        }
+        
+        return success
+    }
+    
+    func getLocalWalletJsonDict() -> NSDictionary? {
+        return TLWalletJson.getWalletJsonDict(TLWalletJson.getLocalWalletJSONFile(),
+                                              password:TLWalletJson.getDecryptedEncryptedWalletJSONPassphrase())
+    }
+    
     
     func showPrivateKeyReaderController(_ viewController: UIViewController, success: @escaping TLWalletUtils.SuccessWithDictionary, error: @escaping TLWalletUtils.ErrorWithString) {
 //        if !isCameraAllowed() {

@@ -1014,12 +1014,14 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    /// This struct is generated for `WelcomeViewController`, and contains static references to 2 segues.
+    /// This struct is generated for `WelcomeViewController`, and contains static references to 3 segues.
     struct welcomeViewController {
       /// Segue identifier `WelcomeToCreate`.
       static let welcomeToCreate: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, WelcomeViewController, CreateViewController> = Rswift.StoryboardSegueIdentifier(identifier: "WelcomeToCreate")
       /// Segue identifier `WelcomeToImport`.
       static let welcomeToImport: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, WelcomeViewController, ImportViewController> = Rswift.StoryboardSegueIdentifier(identifier: "WelcomeToImport")
+      /// Segue identifier `welcomeToCopy`.
+      static let welcomeToCopy: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, WelcomeViewController, CopyViewController> = Rswift.StoryboardSegueIdentifier(identifier: "welcomeToCopy")
       
       /// Optionally returns a typed version of segue `WelcomeToCreate`.
       /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
@@ -1033,6 +1035,13 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func welcomeToImport(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, WelcomeViewController, ImportViewController>? {
         return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.welcomeViewController.welcomeToImport, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `welcomeToCopy`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func welcomeToCopy(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, WelcomeViewController, CopyViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.welcomeViewController.welcomeToCopy, segue: segue)
       }
       
       fileprivate init() {}

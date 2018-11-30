@@ -50,9 +50,26 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         print(keystore)
-        if keystore.hasWallets {
+        print(TLPreferences.hasSetupHDWallet())
+        if keystore.hasWallets && TLPreferences.hasSetupHDWallet(){
             mainTabBarController.changeInfo(for: keystore.recentlyUsedWallet ?? keystore.wallets.first!)
             mainTabBarController.selectedIndex = 2
+            
+            let passphrase = TLWalletPassphrase.getDecryptedWalletPassphrase()
+            let masterHex = TLHDWalletWrapper.getMasterHex(passphrase ?? "")
+            
+            if (TLWalletJson.getDecryptedEncryptedWalletJSONPassphrase() != nil) {
+                let localWalletPayload = AppDelegate.instance().getLocalWalletJsonDict()
+                if let walletPayload = localWalletPayload {
+                    let appWallet = AppDelegate.instance().appWallet
+                    appWallet.loadWalletPayload(walletPayload, masterHex:masterHex)
+                    AppDelegate.instance().btcAccounts = TLAccounts(appWallet: appWallet, accountsArray: appWallet.getAccountObjectArray(), accountType:.hdWallet)
+                } else {
+                    TLPrompts.promptErrorMessage(TLDisplayStrings.ERROR_STRING(), message:TLDisplayStrings.ERROR_LOADING_WALLET_JSON_FILE_STRING())
+                    NSException(name: NSExceptionName(rawValue: "Error"), reason: "Error loading wallet JSON file", userInfo: nil).raise()
+                }
+            }
+            
             self.present(mainTabBarController, animated: true, completion: nil)
             //self.performSegue(withIdentifier: "BeginToMain", sender: "跳转去主页")
         } else {
