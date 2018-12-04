@@ -68,17 +68,28 @@ class TokensViewController: UIViewController,UITableViewDelegate,UITableViewData
         let singleTap = UITapGestureRecognizer.init(target:self, action: #selector(handleSingleTap(tap:)))
         bgImage.addGestureRecognizer(singleTap)
         bgImage.isUserInteractionEnabled = true
+        
+        let button = UIButton(type:.custom)
+        button.setTitle("ETH", for: .normal)
+        button.setBackgroundImage(R.image.btn_switch_1(), for: .normal)
+        button.setBackgroundImage(R.image.btn_switch_2(), for: .highlighted)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.addTarget(self, action: #selector(changeNet), for: .touchUpInside)
+        self.navigationItem.titleView = button
     }
     @objc private func handleSingleTap(tap:UITapGestureRecognizer) {
         UIPasteboard.general.string = self.viewModel.address.description
         print(self.viewModel.address.description)
         alert(text: LanguageHelper.getString(key: "已经复制钱包地址到剪贴板"))
     }
-
     
+    @objc func changeNet(button : UIButton) {
+        print("切换网络")
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
-        self.title = LanguageHelper.getString(key: "wallet.bar.title");
+        //self.title = LanguageHelper.getString(key: "wallet.bar.title");
         mainWalletViewController.tabBarController?.tabBar.isHidden = false
         sheduleBalanceUpdate()
         startTokenObservation()

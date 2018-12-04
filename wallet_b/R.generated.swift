@@ -48,7 +48,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 97 images.
+  /// This `R.image` struct is generated, and contains static references to 101 images.
   struct image {
     /// Image `LaunchImage`.
     static let launchImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage")
@@ -154,6 +154,10 @@ struct R: Rswift.Validatable {
     static let btn_set_1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "btn_set_1")
     /// Image `btn_set_2`.
     static let btn_set_2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "btn_set_2")
+    /// Image `btn_switch_1`.
+    static let btn_switch_1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "btn_switch_1")
+    /// Image `btn_switch_2`.
+    static let btn_switch_2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "btn_switch_2")
     /// Image `btn_tick_1`.
     static let btn_tick_1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "btn_tick_1")
     /// Image `btn_tick_2`.
@@ -192,6 +196,8 @@ struct R: Rswift.Validatable {
     static let icon_addressbook = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_addressbook")
     /// Image `icon_arrow`.
     static let icon_arrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_arrow")
+    /// Image `icon_btc`.
+    static let icon_btc = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_btc")
     /// Image `icon_careful_2`.
     static let icon_careful_2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_careful_2")
     /// Image `icon_careful`.
@@ -208,6 +214,8 @@ struct R: Rswift.Validatable {
     static let icon_establish_3 = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_establish_3")
     /// Image `icon_establish_4`.
     static let icon_establish_4 = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_establish_4")
+    /// Image `icon_eth`.
+    static let icon_eth = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_eth")
     /// Image `icon_language`.
     static let icon_language = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_language")
     /// Image `icon_network`.
@@ -505,6 +513,16 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.btn_set_2, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "btn_switch_1", bundle: ..., traitCollection: ...)`
+    static func btn_switch_1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.btn_switch_1, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "btn_switch_2", bundle: ..., traitCollection: ...)`
+    static func btn_switch_2(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.btn_switch_2, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "btn_tick_1", bundle: ..., traitCollection: ...)`
     static func btn_tick_1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.btn_tick_1, compatibleWith: traitCollection)
@@ -600,6 +618,11 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.icon_arrow, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "icon_btc", bundle: ..., traitCollection: ...)`
+    static func icon_btc(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_btc, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "icon_careful", bundle: ..., traitCollection: ...)`
     static func icon_careful(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_careful, compatibleWith: traitCollection)
@@ -638,6 +661,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_establish_4", bundle: ..., traitCollection: ...)`
     static func icon_establish_4(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_establish_4, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_eth", bundle: ..., traitCollection: ...)`
+    static func icon_eth(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.icon_eth, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_language", bundle: ..., traitCollection: ...)`
