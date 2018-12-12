@@ -18,15 +18,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        //添加通知，发送通知后调用changeLanguage刷新界面
         NotificationCenter.default.addObserver(self, selector: #selector(changeLanguage), name: NSNotification.Name(rawValue: "LanguageChanged"), object: nil)
         
         label?.text = LanguageHelper.getString(key: "welcome.title1")
-        
+        //获取并判断wallet数据是否存在
         var wallets = UserDefaults.standard.dictionary(forKey: "wallets")
         if(wallets != nil){
             
         }else{
+            //不存在就创建
             wallets = [String:Any]() 
             UserDefaults.standard.set(wallets, forKey: "wallets")
         }
@@ -51,14 +52,18 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         print(keystore)
         print(TLPreferences.hasSetupHDWallet())
+        //有钱包eth和BTc
         if keystore.hasWallets && TLPreferences.hasSetupHDWallet(){
+            //创建tabbarview
             mainTabBarController.changeInfo(for: keystore.recentlyUsedWallet ?? keystore.wallets.first!)
+            //到钱包页面
             mainTabBarController.selectedIndex = 2
-            
+            //取助记词
             let passphrase = TLWalletPassphrase.getDecryptedWalletPassphrase()
             let masterHex = TLHDWalletWrapper.getMasterHex(passphrase ?? "")
             
             if (TLWalletJson.getDecryptedEncryptedWalletJSONPassphrase() != nil) {
+                //AppDelegate实例对象
                 let localWalletPayload = AppDelegate.instance().getLocalWalletJsonDict()
                 if let walletPayload = localWalletPayload {
                     let appWallet = AppDelegate.instance().appWallet
@@ -70,9 +75,11 @@ class ViewController: UIViewController {
                 }
             }
             
+            //跳转创建mainTabBarController
             self.present(mainTabBarController, animated: true, completion: nil)
             //self.performSegue(withIdentifier: "BeginToMain", sender: "跳转去主页")
         } else {
+            //跳转创建
             self.performSegue(withIdentifier: "BeginToWelcome", sender: "跳转去欢迎页")
         }
     }
@@ -89,7 +96,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func toE(_ sender: UIButton) {
+        //多语言
         LanguageHelper.shareInstance.setLanguage(langeuage: "en")
+        //发送通知
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LanguageChanged"), object: nil)
     }
     
@@ -109,7 +118,6 @@ class ViewController: UIViewController {
             let vc = controller.viewControllers.first as! WelcomeViewController
             vc.backBtn.isHidden = true
             //controller.itemString = sender as? String
-            
             print(sender as? String as Any)
         }
         if segue.identifier == "BeginToMain"{
@@ -117,7 +125,6 @@ class ViewController: UIViewController {
             let controller = segue.destination as! UITabBarController
             //controller.itemString = sender as? String
             controller.selectedIndex = 1
-            
             print(sender as? String as Any)
         }
     }

@@ -36,7 +36,9 @@ class CopyViewController: UIViewController {
     }
     
     @IBAction func copyCallback(_ sender: UIButton) {
+        //跳转Identifier: "passNa"的viewcontroller
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "passNa") as! UINavigationController
+        //传值
         let vc = controller.viewControllers.first as! PassWordTableViewController
         vc.account = account
         self.present(controller, animated: true, completion: nil)

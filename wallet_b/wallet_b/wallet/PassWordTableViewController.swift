@@ -74,7 +74,7 @@ class PassWordTableViewController: UITableViewController,NVActivityIndicatorView
             keystore.export(account: account, password: currentPassword, newPassword: self.passWord_1.text!) { result in
                 self.handleExport(result: result){ result in
                     //self.finish(result: result)
-
+                    //获取根视图
                     var rootVC = self.presentingViewController
                     if (self.presentViewController != nil) {
                         rootVC = self.presentViewController
@@ -103,7 +103,7 @@ class PassWordTableViewController: UITableViewController,NVActivityIndicatorView
         }
     }
     
-    private func handleExport(result: (Result<String, KeystoreError>), completion: @escaping (Result<Bool, AnyError>) -> Void) {
+    private func handleExport(result: (Result<String, KeystoreError>), completion:  @escaping (Result<Bool, AnyError>) -> Void) {
         DispatchQueue.main.async {
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
         }

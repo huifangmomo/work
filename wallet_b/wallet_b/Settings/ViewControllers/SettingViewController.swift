@@ -19,7 +19,7 @@ class SettingViewController: UITableViewController {
     
     @IBOutlet weak var psdSwitch: UISwitch!
     
-    
+    //设置界面
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,6 +43,7 @@ class SettingViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //设置密码开关
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
             let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "passWordView") as! PassWordViewController
@@ -101,23 +102,27 @@ class SettingViewController: UITableViewController {
         return 4
     }
     
+    //设置tableview按钮
     override func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath){
         //print("点击"+String(indexPath.section)+String(indexPath.row))
         
         tableView.deselectRow(at: indexPath, animated:true)//点击完成，取消高亮
         if indexPath.section == 0 {
+            //网络页面
             if indexPath.row == 0 {
                 let vc = SelectionTableViewController()
                 vc.showType = 0
                 vc.settingViewModel = self.viewModel
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+            //钱包页面
             if indexPath.row == 1 {
                 let vc = UIStoryboard(name: "Main", bundle: nil)
                     .instantiateViewController(withIdentifier: "MainWalletManage")
                 //vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: true, completion: nil)
             }
+            //地址簿
             if indexPath.row == 2 {
                 let vc = UIStoryboard(name: "Main", bundle: nil)
                     .instantiateViewController(withIdentifier: "AddressBookView")
@@ -125,19 +130,23 @@ class SettingViewController: UITableViewController {
                 self.present(vc, animated: true, completion: nil)
             }
         }
+        
         if indexPath.section == 2 {
+            //语言
             if indexPath.row == 1 {
                 let vc = SelectionTableViewController()
                 vc.showType = 1
                 vc.settingViewModel = self.viewModel
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+            //货币
             if indexPath.row == 0 {
                 let vc = SelectionTableViewController()
                 vc.showType = 2
                 vc.settingViewModel = self.viewModel
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+            //关于
             if indexPath.row == 3 {
                 let vc = UIStoryboard(name: "Main", bundle: nil)
                     .instantiateViewController(withIdentifier: "AboutView")
@@ -145,6 +154,7 @@ class SettingViewController: UITableViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        //清空缓存
         if indexPath.section == 3 {
             if indexPath.row == 0 {
                 //removeWKWebViewCookies()
@@ -153,6 +163,7 @@ class SettingViewController: UITableViewController {
         }
     }
     
+    //设置cell样式
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
