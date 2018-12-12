@@ -10,16 +10,25 @@ class WelcomeViewController: UIViewController ,NVActivityIndicatorViewable {
     @IBOutlet weak var backBtn: UIButton!
     
     lazy var collectionViewController: OnboardingCollectionViewController = {
+        //集合视图
         let layout = UICollectionViewFlowLayout()
+        //行间距
         layout.minimumLineSpacing = 0
+        //列
         layout.minimumInteritemSpacing = 0
+        
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
         layout.scrollDirection = .horizontal
+        //设置界面
         let collectionViewController = OnboardingCollectionViewController(collectionViewLayout: layout)
         collectionViewController.pages = pages
         collectionViewController.pageControl = pageControl
+        //是否启用分页
         collectionViewController.collectionView?.isPagingEnabled = true
+        //页面指示器
         collectionViewController.collectionView?.showsHorizontalScrollIndicator = false
+        
         collectionViewController.collectionView?.backgroundColor = viewModel.backgroundColor
         return collectionViewController
     }()
@@ -28,9 +37,11 @@ class WelcomeViewController: UIViewController ,NVActivityIndicatorViewable {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         return pageControl
     }()
+    //创建按钮
     let createWalletButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        //按钮状态
         button.setBackgroundImage(R.image.btn_establish_1(), for: UIControlState.normal)
         button.setBackgroundImage(R.image.btn_establish_2(), for: UIControlState.highlighted)
         button.setTitle(LanguageHelper.getString(key: "create.bar.title"), for: UIControlState.normal)
@@ -47,6 +58,8 @@ class WelcomeViewController: UIViewController ,NVActivityIndicatorViewable {
         importWalletButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         return importWalletButton
     }()
+    
+    //视图model
     let pages: [OnboardingPageViewModel] = [
         OnboardingPageViewModel(
             title: LanguageHelper.getString(key: "welcome.title1"),
@@ -75,7 +88,7 @@ class WelcomeViewController: UIViewController ,NVActivityIndicatorViewable {
 
         viewModel.numberOfPages = pages.count
         view.addSubview(collectionViewController.view)
-
+        //按钮布局
         let stackView = UIStackView(arrangedSubviews: [
             pageControl,
             createWalletButton,
@@ -84,6 +97,7 @@ class WelcomeViewController: UIViewController ,NVActivityIndicatorViewable {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 5
+        //没钱包进入隐藏返回按钮
         if self.backBtn.isHidden == true {
             self.importWalletButton.isHidden = true
             stackView.spacing = 30
@@ -93,13 +107,15 @@ class WelcomeViewController: UIViewController ,NVActivityIndicatorViewable {
         collectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            //collectionViewController位置
             collectionViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
             collectionViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
+            //2个button位置
             stackView.topAnchor.constraint(equalTo: collectionViewController.view.centerYAnchor, constant: 120),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            //button长度
             stackView.widthAnchor.constraint(equalToConstant: 300),
             
             pageControl.heightAnchor.constraint(equalToConstant: 35),
@@ -112,6 +128,7 @@ class WelcomeViewController: UIViewController ,NVActivityIndicatorViewable {
             importWalletButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             ])
         
+        //点击事件
         createWalletButton.addTarget(self, action: #selector(start), for: .touchUpInside)
         importWalletButton.addTarget(self, action: #selector(importFlow), for: .touchUpInside)
         

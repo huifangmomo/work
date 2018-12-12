@@ -27,7 +27,6 @@ class ImportViewController: UIViewController,NVActivityIndicatorViewable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         print(itemString)
 
@@ -48,6 +47,7 @@ class ImportViewController: UIViewController,NVActivityIndicatorViewable {
         view.endEditing(true)
     }
     
+    //展示不同选择
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
         var placeholderTab = [ "Keystore JSON",LanguageHelper.getString(key: "import.peivate Key"),LanguageHelper.getString(key: "import.mnemonic"),LanguageHelper.getString(key: "import.watch")]
         self.infoTF.text = ""
@@ -61,10 +61,10 @@ class ImportViewController: UIViewController,NVActivityIndicatorViewable {
         infoTF.placeholder = placeholderTab[sender.selectedSegmentIndex]
     }
     
-   
+   //导入钱包
     @IBAction func importCallback(_ sender: UIButton) {
         let type = segMentedC.selectedSegmentIndex
-        
+
         switch type {
         case 0:
             if infoTF.text! == ""{
@@ -93,7 +93,7 @@ class ImportViewController: UIViewController,NVActivityIndicatorViewable {
         default:
             break
         }
-        
+        //根据不同类型导入
         let importType: ImportType = {
             switch type {
             case 0:

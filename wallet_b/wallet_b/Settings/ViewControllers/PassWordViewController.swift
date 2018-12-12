@@ -23,6 +23,7 @@ class PassWordViewController: UIViewController {
         
         if showType==1 {
             psdStatus = 0
+            //创建密码界面
             let payAlert = PayAlert(frame: UIScreen.main.bounds)
             payAlert.titleLabel.text = "请输入新密码"
             payAlert.show_2(view: self.view)

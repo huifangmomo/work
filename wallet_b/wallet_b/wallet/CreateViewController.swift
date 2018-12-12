@@ -39,6 +39,7 @@ class CreateViewController: UIViewController,NVActivityIndicatorViewable {
     override func viewWillAppear(_ animated: Bool) {
         self.title = LanguageHelper.getString(key: "create.bar.title")
         let str = LanguageHelper.getString(key: "create.warn")
+        //富文本
         warnLab.attributedText  = self .getAttributeStringWithString(str, lineSpace: 5.00)
         self.nameTF.placeholder = LanguageHelper.getString(key: "钱包名称");
         self.createBtn.setTitle(LanguageHelper.getString(key: "create.bar.title"), for: .normal)

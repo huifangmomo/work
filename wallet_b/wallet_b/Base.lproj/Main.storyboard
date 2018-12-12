@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,7 +83,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g06-SU-SG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="1032"/>
+            <point key="canvasLocation" x="444" y="974"/>
         </scene>
         <!--行情-->
         <scene sceneID="duV-Zk-2BH">
@@ -131,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ido-oz-cAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="357.57121439280365"/>
+            <point key="canvasLocation" x="2289" y="358"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="w6d-nN-V8a">
@@ -165,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npq-zC-BVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="-369"/>
+            <point key="canvasLocation" x="2778" y="-1787"/>
         </scene>
         <!--Import View Controller-->
         <scene sceneID="k0i-FR-VNH">
@@ -196,6 +198,7 @@
                                     <segment title="Watch"/>
                                 </segments>
                                 <connections>
+                                    <action selector="dfs:" destination="g9z-VD-2tV" eventType="valueChanged" id="nxv-dg-KQq"/>
                                     <action selector="segmentedValueChanged:" destination="g9z-VD-2tV" eventType="valueChanged" id="e57-Vn-Dqv"/>
                                 </connections>
                             </segmentedControl>
@@ -253,6 +256,7 @@
                         <viewLayoutGuide key="safeArea" id="gDZ-ll-AbD"/>
                     </view>
                     <connections>
+                        <outlet property="ew" destination="wDP-ds-zIC" id="hJO-jv-Iih"/>
                         <outlet property="importBtn" destination="Qqs-Ov-Mgi" id="LG6-lO-swV"/>
                         <outlet property="infoTF" destination="3a3-F1-MHZ" id="MaL-Sy-VoB"/>
                         <outlet property="passwordTF" destination="h8h-SB-3jM" id="EXI-25-otV"/>
@@ -263,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjY-cB-rVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2972" y="-369"/>
+            <point key="canvasLocation" x="3001" y="-369"/>
         </scene>
         <!--Copy View Controller-->
         <scene sceneID="YoO-CY-0W3">
@@ -334,7 +338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GAM-qS-4H3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3644" y="-369.26536731634184"/>
+            <point key="canvasLocation" x="3631" y="-369"/>
         </scene>
         <!--备份密码-->
         <scene sceneID="IQ4-FO-io7">
@@ -467,7 +471,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ru-BW-voL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4306" y="-369"/>
+            <point key="canvasLocation" x="4276" y="-369"/>
         </scene>
         <!--Create View Controller-->
         <scene sceneID="32H-Pz-mVB">
@@ -616,7 +620,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWL-2f-1Pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2298" y="-369"/>
+            <point key="canvasLocation" x="2316" y="-369"/>
         </scene>
         <!--钱包-->
         <scene sceneID="Ice-0U-Yoj">
@@ -700,7 +704,7 @@
                                     <action selector="addTokenCallback:" destination="o48-dn-t1m" eventType="touchUpInside" id="NQh-G8-Hbq"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C53-E9-ZQJ" userLabel="popView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C53-E9-ZQJ" userLabel="popView">
                                 <rect key="frame" x="86" y="64" width="203" height="176"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_update" translatesAutoresizingMaskIntoConstraints="NO" id="bqH-nd-4cx">
@@ -788,7 +792,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TXt-9u-83H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3044.9275362318845" y="1030.4347826086957"/>
+            <point key="canvasLocation" x="3046" y="1030"/>
         </scene>
         <!--Change Wallet View Controller-->
         <scene sceneID="hqW-Ip-sht">
@@ -866,7 +870,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaE-bF-8xo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3733.5999999999999" y="1030.4347826086957"/>
+            <point key="canvasLocation" x="3673" y="1030"/>
         </scene>
         <!--Transfer View Controller-->
         <scene sceneID="Dme-vz-zqh">
@@ -1937,7 +1941,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Oj-l7-Uhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-217" y="1826"/>
+            <point key="canvasLocation" x="-762" y="1596"/>
         </scene>
         <!--Dapp-->
         <scene sceneID="7zm-xF-gkY">
@@ -1960,7 +1964,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDx-BR-cwq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="1826"/>
+            <point key="canvasLocation" x="-762" y="2311"/>
         </scene>
         <!--交易-->
         <scene sceneID="7xl-w2-3Wz">
@@ -1980,7 +1984,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZ4-Le-nN6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="1738"/>
+            <point key="canvasLocation" x="823" y="1903"/>
         </scene>
         <!--交易-->
         <scene sceneID="Nve-VF-hlU">
@@ -2203,7 +2207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bN-mx-PQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="1737.481259370315"/>
+            <point key="canvasLocation" x="1617" y="1737"/>
         </scene>
         <!--Details Table View Controller-->
         <scene sceneID="scF-Nm-f43">
@@ -2521,7 +2525,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTR-ah-jNz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="2418"/>
+            <point key="canvasLocation" x="52" y="2310"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="T1t-Tf-4E3">
@@ -3267,7 +3271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbh-Fh-Ced" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3002" y="329"/>
+            <point key="canvasLocation" x="3001" y="357"/>
         </scene>
         <!--News View Controller1-->
         <scene sceneID="w9u-Te-aoL">
@@ -3662,31 +3666,31 @@
         <image name="icon_ money_1" width="23" height="23"/>
         <image name="icon_about" width="25" height="25"/>
         <image name="icon_add" width="25" height="25"/>
-        <image name="icon_addressbook" width="20.5" height="20.5"/>
+        <image name="icon_addressbook" width="20" height="20"/>
         <image name="icon_arrow" width="22" height="17"/>
         <image name="icon_btc" width="40" height="40"/>
         <image name="icon_careful" width="46" height="39"/>
-        <image name="icon_careful_2" width="72.5" height="72.5"/>
+        <image name="icon_careful_2" width="72" height="72"/>
         <image name="icon_clear" width="25" height="25"/>
         <image name="icon_currency" width="25" height="25"/>
         <image name="icon_eth" width="40" height="40"/>
         <image name="icon_language" width="25" height="25"/>
         <image name="icon_network" width="25" height="25"/>
         <image name="icon_notice" width="25" height="25"/>
-        <image name="icon_rabbit" width="24" height="21.5"/>
-        <image name="icon_shanping" width="166.5" height="196.5"/>
+        <image name="icon_rabbit" width="24" height="21"/>
+        <image name="icon_shanping" width="166" height="196"/>
         <image name="icon_share" width="25" height="25"/>
-        <image name="icon_tortoise" width="24" height="21.5"/>
+        <image name="icon_tortoise" width="24" height="21"/>
         <image name="icon_wallet" width="28" height="29"/>
         <image name="icon_wallet_1" width="42" height="42"/>
         <image name="icon_wallet_4" width="25" height="25"/>
-        <image name="list_tab" width="75" height="1.5"/>
+        <image name="list_tab" width="75" height="1"/>
         <image name="set" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ehi-lr-dQR"/>
-        <segue reference="io7-zq-KEo"/>
-        <segue reference="eAW-JA-TM7"/>
+        <segue reference="ejV-5b-XCD"/>
+        <segue reference="pT4-SH-XC5"/>
+        <segue reference="y0r-YK-keX"/>
         <segue reference="15a-EY-cGK"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,7 +24,7 @@ class SelectionTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+        //注册一个cell
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellID")
         let view = UIView()
         view.backgroundColor = UIColor.clear
